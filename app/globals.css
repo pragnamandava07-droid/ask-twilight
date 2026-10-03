@@ -1,0 +1,25 @@
+.flow-left {
+  left: -32%; top: 36%; width: 90%; height: 56%;
+  background: linear-gradient(100deg, rgba(20,90,55,0) 0%, #1f6b44 25%, #2f8a5c 52%, #7fb892 72%, rgba(90,150,110,0) 100%);
+  transform: rotate(-20deg);
+  animation: flowL 17s ease-in-out infinite alternate;
+}
+.flow-right {
+  right: -32%; top: 28%; width: 90%; height: 56%;
+  background: linear-gradient(260deg, rgba(90,140,80,0) 0%, #5e9a5e 25%, #2e7a58 52%, #1b5a42 75%, rgba(15,80,55,0) 100%);
+  transform: rotate(20deg);
+  animation: flowR 22s ease-in-out infinite alternate;
+}
+.flow-core {
+  left: 18%; bottom: -30%; width: 64%; height: 52%;
+  background: radial-gradient(ellipse, rgba(45,125,85,.5), rgba(20,75,55,.22) 50%, transparent 72%);
+  animation: pulse 13s ease-in-out infinite alternate;
+}
+.dot-grid {
+  position: absolute; inset: 0; opacity: .22;
+  background-image: radial-gradient(rgba(160,210,175,.55) 1px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 8%, #000 75%);
+  mask-image: linear-gradient(180deg, transparent 8%, #000 75%);
+}
+
