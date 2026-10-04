@@ -8,6 +8,15 @@ const ICONS: Record<string, string> = { meeting: "🗣️", email: "💌", call:
 
 export default function AccountPage() {
   const { id } = useParams<{ id: string }>();
+  const router = useRouter();
+
+  async function deleteAccount() {
+    if (!confirm(`Delete "${data.account?.name}" and everything saved for it? This can't be undone.`)) return;
+    await fetch(`/api/accounts/${id}`, { method: "DELETE" });
+    window.dispatchEvent(new Event("accounts-changed"));
+    router.push("/accounts");
+   }
+
   const [data, setData] = useState<any>(null);
 
   async function load() {
@@ -21,7 +30,7 @@ export default function AccountPage() {
     load();
   }
 
-  if (!data) return <main className="p-10 text-center opacity-80">Gathering the fireflies… ✨</main>;
+  if (!data) return <main className="p-10 text-center opacity-80">Loading... ✨</main>;
 
   const block = (title: string, items: string[], cls: string) =>
     items?.length > 0 && (
@@ -36,6 +45,13 @@ export default function AccountPage() {
   return (
     <main className="max-w-3xl mx-auto px-5 py-10 space-y-6">
       <Link href="/" className="back-link">← Back to home</Link>
+         <button
+     onClick={deleteAccount}
+     className="chip"
+     style={{ marginLeft: "1rem", color: "#ffb4a0", borderColor: "rgba(255,150,120,.5)" }}
+   >
+     🗑 Delete account
+   </button>
 
       <div className="flex items-center gap-4 rise">
         <div className="avatar">{data.account?.name?.[0]}</div>
@@ -52,7 +68,7 @@ export default function AccountPage() {
       />
 
       <section className="grove-card">
-        <h2 className="font-grove text-2xl mb-2">🌿 Promises to keep</h2>
+        <h2 className="font-grove text-2xl mb-2">✅ Open commitments</h2>
         {data.commitments.length === 0 && <p className="opacity-70">Nothing yet. All clear! 🌙</p>}
         {data.commitments.map((c: any) => (
           <label key={c.id} className="flex items-start gap-3 py-1.5 cursor-pointer">
@@ -66,7 +82,7 @@ export default function AccountPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-grove text-2xl">📖 The story so far</h2>
+        <h2 className="font-grove text-2xl">🗓️ Conversation timeline</h2>
         {data.interactions.map((i: any) => (
           <div key={i.id} className="grove-card rise space-y-3">
             <p className="text-sm opacity-70">
@@ -74,8 +90,8 @@ export default function AccountPage() {
             </p>
             <p className="text-lg">{i.summary}</p>
             {block("✅ Decisions", i.decisions, "tag-good")}
-            {block("🍂 Risks", i.risks, "tag-risk")}
-            {block("🌸 What they need", i.needs, "tag-need")}
+            {block("⚠️ Risks", i.risks, "tag-risk")}
+            {block("🎯 Customer needs", i.needs, "tag-need")}
           </div>
         ))}
       </section>

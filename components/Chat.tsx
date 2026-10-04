@@ -1,12 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
 
+
 export default function Chat({ accountId, suggestions }: { accountId?: string; suggestions?: string[] }) {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<{ role: string; text: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+     const [offset, setOffset] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const recRef = useRef<any>(null);
 
@@ -81,13 +83,29 @@ export default function Chat({ accountId, suggestions }: { accountId?: string; s
     <section className="grove-card space-y-3">
       <p className="text-sm opacity-70">Type a question, or tap the mic and just ask out loud.</p>
 
-      {suggestions && messages.length === 0 && (
-        <div className="flex flex-wrap gap-2">
-          {suggestions.map((s) => (
-            <button key={s} className="chip" onClick={() => ask(s)}>{s}</button>
-          ))}
-        </div>
-      )}
+         {suggestions && suggestions.length > 0 && (
+     <div className="space-y-2">
+       <p className="text-sm opacity-70">Not sure what to ask? Try one of these:</p>
+       <div className="flex flex-wrap gap-2">
+         {Array.from({ length: Math.min(4, suggestions.length) }).map((_, i) => {
+           const s = suggestions[(offset + i) % suggestions.length];
+           return (
+             <button key={s} className="chip" onClick={() => ask(s)} disabled={loading}>
+               {s}
+             </button>
+           );
+         })}
+         {suggestions.length > 4 && (
+           <button
+             className="chip"
+             onClick={() => setOffset((o) => (o + 4) % suggestions.length)}
+           >
+             ↻ More ideas
+           </button>
+         )}
+       </div>
+     </div>
+   )}
 
       <div className="space-y-3">
         {messages.map((m, i) => (
@@ -100,7 +118,7 @@ export default function Chat({ accountId, suggestions }: { accountId?: string; s
             </div>
           </div>
         ))}
-        {loading && <p className="text-sm opacity-70">🦋 The fireflies are thinking…</p>}
+        {loading && <p className="text-sm opacity-70">🦋 Thinking…</p>}
         {listening && <p className="text-sm animate-pulse">🔴 Listening… ask your question</p>}
         {speaking && (
           <button className="chip" onClick={stopAudio}>⏹️ Stop voice</button>

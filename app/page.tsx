@@ -3,6 +3,19 @@ import Chat from "@/components/Chat";
 import Reveal from "@/components/Reveal";
 import { Page, PageDots } from "@/components/Pages";
 
+const HOME_QUESTIONS = [
+  "Show me all customers interested in payroll integration",
+  "Which accounts are at risk of churning?",
+  "What are the open commitments for Priya?",
+  "What risks should I worry about across accounts?",
+  "Who is evaluating a competitor?",
+  "Summarize what we know about Globex Industries",
+  "What did we discuss with Initech recently?",
+  "Which customers need a follow-up this week?",
+  "Which accounts need shift scheduling or time tracking?",
+  "What should I prioritize today?",
+];
+
 const steps = [
   { icon: "🎙️", title: "Capture", text: "Talk, type, or upload" },
   { icon: "✨", title: "Understand", text: "AI finds the story" },
@@ -83,7 +96,7 @@ export default function Home() {
 
         <div className="fade-late" style={{ width: "100%", maxWidth: "56rem" }}>
           {/* PASTE YOUR CHAT LINE HERE (keep any props your old line had) */}
-          <Chat />
+          <Chat suggestions={HOME_QUESTIONS} />
         </div>
 
         <div className="float" style={{ marginTop: "3rem", opacity: 0.6, fontSize: "1.4rem" }}>

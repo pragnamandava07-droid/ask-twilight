@@ -23,7 +23,7 @@ export default function BriefButton() {
   return (
     <div>
       <button className="btn-soft" onClick={play} disabled={loading}>
-        {loading ? "🎶 Tuning the grove…" : "🔊 Hear today's brief"}
+        {loading ? "🎶 Preparing your brief…" : "🔊 Hear today's brief"}
       </button>
       {error && <p className="text-orange-300 text-sm mt-1">{error}</p>}
     </div>

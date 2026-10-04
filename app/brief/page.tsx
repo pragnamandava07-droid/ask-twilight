@@ -6,7 +6,7 @@ export default function BriefPage() {
       <header className="text-center space-y-2 rise">
         <div className="text-5xl float">🔊</div>
         <h1 className="font-grove text-4xl glow-text">Daily voice brief</h1>
-        <p className="opacity-80">A friendly voice reads out your open promises across every account.</p>
+        <p className="opacity-80">A friendly voice reads out your open commitments across every account.</p>
       </header>
 
       <div className="grove-card text-center space-y-4">

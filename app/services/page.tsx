@@ -23,7 +23,7 @@ const SERVICES = [
     href: "/accounts",
     icon: "🌳",
     title: "All accounts",
-    text: "See every customer at a glance with their memories, timeline, and promises to keep.",
+    text: "See every customer at a glance with their memories, timeline, and open commitments.",
   },
 ];
 

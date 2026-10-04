@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const SERVICES = [
   { href: "/add", icon: "📝", label: "Add a conversation", sub: "Notes, live recording, photos & files" },
-  { href: "/brief", icon: "🔊", label: "Daily voice brief", sub: "Hear your open promises" },
+  { href: "/brief", icon: "🔊", label: "Daily voice brief", sub: "Hear your open commitments" },
   { href: "/accounts", icon: "🗂️", label: "All accounts", sub: "Every customer at a glance" },
   { href: "/", icon: "🌙", label: "Ask Twilight", sub: "Ask questions by text or voice" },
 ];

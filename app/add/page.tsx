@@ -71,7 +71,7 @@ export default function AddPage() {
       });
       const json = await res.json();
       if (json.ok) router.push(`/accounts/${json.accountId}`);
-      else setError("The fireflies are busy right now. Please try again in a moment. 🌙");
+      else setError("The AI is busy right now. Please try again in a moment.");
     } catch {
       setError("Something went wrong. Please try again.");
     }
@@ -139,7 +139,7 @@ export default function AddPage() {
         )}
 
         <button className="btn-magic w-full" onClick={submit} disabled={loading || !canSubmit}>
-          {loading ? "✨ Sprinkling magic…" : "✨ Get insights"}
+          {loading ? "✨ Analyzing…" : "✨ Get insights"}
         </button>
         {error && <p className="text-orange-300">{error}</p>}
       </div>

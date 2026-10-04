@@ -54,7 +54,7 @@ export default function AllAccounts() {
                 </div>
               </div>
               <div className="mt-3">
-                <span className="badge">{a.open_commitments} open promises</span>
+                <span className="badge">{a.open_commitments} open commitments</span>
               </div>
             </Link>
             <button
