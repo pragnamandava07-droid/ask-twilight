@@ -25,3 +25,25 @@ export async function GET(
     commitments: commitments.rows,
   });
 }
+
+export async function DELETE(
+  _req: Request,
+  ctx: { params: Promise<{ id: string }> }
+) {
+  const { id } = await ctx.params;
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await client.query("DELETE FROM commitments WHERE account_id = $1", [id]);
+    await client.query("DELETE FROM interactions WHERE account_id = $1", [id]);
+    await client.query("DELETE FROM accounts WHERE id = $1", [id]);
+    await client.query("COMMIT");
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    await client.query("ROLLBACK");
+    console.error(e);
+    return NextResponse.json({ ok: false, error: "Could not delete" }, { status: 500 });
+  } finally {
+    client.release();
+  }
+}

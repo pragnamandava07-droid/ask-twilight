@@ -32,6 +32,16 @@ export default function NavBar() {
     return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
+  useEffect(() => {
+  const refresh = () =>
+    fetch("/api/accounts")
+      .then((r) => r.json())
+      .then((d) => setAccounts(Array.isArray(d) ? d : []))
+      .catch(() => {});
+  window.addEventListener("accounts-changed", refresh);
+  return () => window.removeEventListener("accounts-changed", refresh);
+}, []);
+
   const cls = (active: boolean) => `nav-link ${active ? "nav-link-active" : ""}`;
   const onServices = ["/add", "/brief", "/services"].includes(pathname);
 
