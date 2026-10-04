@@ -83,11 +83,11 @@ export default function AddPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-5 py-10 space-y-5">
-      <Link href="/" className="back-link">← Back to the grove</Link>
+      <Link href="/" className="back-link">← Back to home</Link>
       <div className="text-center space-y-2 rise">
         <div className="text-5xl float">🌱</div>
-        <h1 className="font-grove text-4xl glow-text">Plant a new memory</h1>
-        <p className="opacity-80">Paste notes, record a meeting, or drop in photos and files. Watch them grow into insights.</p>
+        <h1 className="font-grove text-4xl glow-text">Add a conversation</h1>
+        <p className="opacity-80">Paste notes, record a meeting, or drop in photos and files to get insights.</p>
       </div>
 
       <div className="grove-card space-y-4">
@@ -139,7 +139,7 @@ export default function AddPage() {
         )}
 
         <button className="btn-magic w-full" onClick={submit} disabled={loading || !canSubmit}>
-          {loading ? "✨ Sprinkling magic…" : "✨ Grow insights"}
+          {loading ? "✨ Sprinkling magic…" : "✨ Get insights"}
         </button>
         {error && <p className="text-orange-300">{error}</p>}
       </div>

@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SERVICES = [
-  { href: "/add", icon: "🌱", label: "Plant a new memory", sub: "Notes, live recording, photos & files" },
+  { href: "/add", icon: "📝", label: "Add a conversation", sub: "Notes, live recording, photos & files" },
   { href: "/brief", icon: "🔊", label: "Daily voice brief", sub: "Hear your open promises" },
-  { href: "/accounts", icon: "🌳", label: "Your grove", sub: "All customers at a glance" },
-  { href: "/", icon: "🕯️", label: "Whisper to the grove", sub: "Ask questions by text or voice" },
+  { href: "/accounts", icon: "🗂️", label: "All accounts", sub: "Every customer at a glance" },
+  { href: "/", icon: "🌙", label: "Ask Twilight", sub: "Ask questions by text or voice" },
 ];
 
 export default function NavBar() {
@@ -69,7 +69,7 @@ export default function NavBar() {
              Services ▾
           </button>
           {menu === "services" && (
-            <div className="dropdown" style={{ minWidth: "290px" }}>
+            <div className="dropdown" style={{ minWidth: "290px", left: "auto", right: 0 }}>
               {SERVICES.map((s) => (
                 <Link key={s.href} href={s.href} className="dropdown-item">
                   <span style={{ fontSize: "1.4rem" }}>{s.icon}</span>

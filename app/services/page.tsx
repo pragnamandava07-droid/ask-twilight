@@ -4,7 +4,7 @@ const SERVICES = [
   {
     href: "/add",
     icon: "🌱",
-    title: "Plant a new memory",
+    title: "Add a conversation",
     text: "Paste notes, record a meeting live, or drop in photos, PDFs, and audio. AI pulls out decisions, risks, needs, and promises.",
   },
   {
@@ -22,7 +22,7 @@ const SERVICES = [
   {
     href: "/accounts",
     icon: "🌳",
-    title: "Your grove",
+    title: "All accounts",
     text: "See every customer at a glance with their memories, timeline, and promises to keep.",
   },
 ];

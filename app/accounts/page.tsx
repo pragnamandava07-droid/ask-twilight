@@ -18,13 +18,13 @@ export default function AllAccounts() {
     <main className="max-w-4xl mx-auto px-5 py-10 space-y-6">
       <header className="text-center space-y-2 rise">
         <div className="text-5xl float">🌳</div>
-        <h1 className="font-grove text-4xl glow-text">Your grove</h1>
-        <p className="opacity-80">Every customer you've planted, all in one place.</p>
+        <h1 className="font-grove text-4xl glow-text">All accounts</h1>
+        <p className="opacity-80">Every customer, all in one place.</p>
       </header>
 
       {!loaded && <p className="text-center opacity-70">Gathering the fireflies…</p>}
       {loaded && accounts.length === 0 && (
-        <div className="grove-card text-center">🌱 Your grove is empty. Plant your first memory to watch it grow!</div>
+        <div className="grove-card text-center">🌱 No accounts yet. Add your first conversation to get started!</div>
       )}
 
       <div className="grid gap-4 sm:grid-cols-2">

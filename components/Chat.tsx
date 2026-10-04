@@ -79,7 +79,6 @@ export default function Chat({ accountId, suggestions }: { accountId?: string; s
 
   return (
     <section className="grove-card space-y-3">
-      <h2 className="font-grove text-2xl">🕯️ Whisper to the grove</h2>
       <p className="text-sm opacity-70">Type a question, or tap the mic and just ask out loud.</p>
 
       {suggestions && messages.length === 0 && (

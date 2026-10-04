@@ -35,7 +35,7 @@ export default function AccountPage() {
 
   return (
     <main className="max-w-3xl mx-auto px-5 py-10 space-y-6">
-      <Link href="/" className="back-link">← Back to the grove</Link>
+      <Link href="/" className="back-link">← Back to home</Link>
 
       <div className="flex items-center gap-4 rise">
         <div className="avatar">{data.account?.name?.[0]}</div>
