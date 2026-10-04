@@ -6,7 +6,7 @@ import MicRecorder from "@/components/MicRecorder";
 
 type Attached = { name: string; mimeType: string; data: string; size: number };
 
-const MAX_TOTAL = 4 * 1024 * 1024; // 4 MB total, keeps uploads fast and reliable
+const MAX_TOTAL = 3 * 1024 * 1024; // 3 MB total, keeps uploads fast and reliable
 
 function readAsBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -46,7 +46,7 @@ export default function AddPage() {
       }
       const total = next.reduce((s, x) => s + x.size, 0) + f.size;
       if (total > MAX_TOTAL) {
-        setError("Files are too big. Keep the total under 4 MB (try a smaller photo).");
+        setError("Files are too big. Keep the total under 3 MB (try a smaller photo).");
         continue;
       }
       next.push({ name: f.name, mimeType: f.type, data: await readAsBase64(f), size: f.size });
